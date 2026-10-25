@@ -1,0 +1,25 @@
+# Cloudflare Pages 项目配置（管理版）
+# 密钥（SESSION_SECRET / ADMIN_PASSWORD / ADMIN_TOKEN）不要写在这里。
+name = "cf-pages-shortlink-admin"
+compatibility_date = "2026-10-01"
+pages_build_output_dir = "public"
+
+# D1：先创建数据库
+#   npx wrangler d1 create shortlink
+# 把返回的 database_id 填到下面
+[[d1_databases]]
+binding = "DB"
+database_name = "shortlink"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+
+[vars]
+# 站点名称（页面标题）
+SITE_NAME = "短链服务"
+# 留空自动使用请求域名
+BASE_URL = ""
+# 是否允许未登录用户创建短链："1" 开启（也可在后台设置里改，后台优先）
+ALLOW_PUBLIC_CREATE = "0"
+# 最多短链条数，0 = 不限制
+MAX_LINKS = "5000"
+# 是否记录点击（"0" 关闭，省 D1 写入）
+COUNT_HITS = "1"

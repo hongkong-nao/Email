@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>管理后台 · 短链服务</title>
+    <link rel="stylesheet" href="/admin/admin.css" />
+  </head>
+  <body>
+    <!-- 登录 -->
+    <div id="login-view" class="login-wrap" hidden>
+      <form id="login-form" class="login-card" autocomplete="on">
+        <div class="brand">
+          <span class="logo">🔗</span>
+          <div class="brand-text">
+            <h1 id="login-title">短链管理台</h1>
+            <p>Cloudflare Pages · D1</p>
+          </div>
+        </div>
+        <label class="field">
+          <span>用户名</span>
+          <input id="login-username" name="username" autocomplete="username" required />
+        </label>
+        <label class="field">
+          <span>密码</span>
+          <input id="login-password" name="password" type="password" autocomplete="current-password" required />
+        </label>
+        <button class="btn primary block" type="submit" id="login-submit">登录</button>
+        <p id="login-msg" class="msg"></p>
+        <p class="login-foot"><a href="/">← 返回首页</a></p>
+      </form>
+    </div>
+
+    <!-- 后台 -->
+    <div id="shell" class="shell" hidden>
+      <aside class="sidebar">
+        <div class="brand">
+          <span class="logo">🔗</span>
+          <div class="brand-text">
+            <strong id="side-title">短链管理台</strong>
+            <small>Pages · D1</small>
+          </div>
+        </div>
+        <nav id="nav" class="nav">
+          <button class="nav-item" data-view="overview" type="button">概览</button>
+          <button class="nav-item" data-view="links" type="button">链接管理</button>
+          <button class="nav-item" data-view="clicks" type="button">点击记录</button>
+          <button class="nav-item" data-view="admins" type="button">管理员</button>
+          <button class="nav-item" data-view="settings" type="button">设置</button>
+          <button class="nav-item" data-view="audit" type="button">审计日志</button>
+        </nav>
+        <div class="side-foot">
+          <a href="/" target="_blank" rel="noreferrer">打开站点 ↗</a>
+        </div>
+      </aside>
+
+      <div class="main">
+        <header class="topbar">
+          <h2 id="page-title">概览</h2>
+          <div class="topbar-right">
+            <span id="who" class="who"></span>
+            <button id="logout" class="btn ghost sm" type="button">退出</button>
+          </div>
+        </header>
+        <div id="view" class="view"></div>
+      </div>
+    </div>
+
+    <div id="modal-root"></div>
+    <div id="toast" class="toast" hidden></div>
+    <script src="/admin/admin.js"></script>
+  </body>
+</html>

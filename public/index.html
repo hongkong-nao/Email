@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>短链服务</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%97%3C/text%3E%3C/svg%3E" />
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="hero">
+        <span class="badge">Cloudflare Pages · D1 · 管理后台</span>
+        <h1 id="site-title">短链服务</h1>
+        <p class="sub">简洁的短链跳转，支持自定义短码、有效期与点击统计。</p>
+      </header>
+
+      <section id="public-create" class="card" hidden>
+        <h2>快速创建短链</h2>
+        <p class="hint">无需登录即可创建（受 IP 限流：每小时最多 5 条）。</p>
+        <form id="public-form">
+          <label class="field">
+            <span>目标地址</span>
+            <input id="public-url" type="text" placeholder="example.com/path" required autocomplete="off" />
+          </label>
+          <div class="grid">
+            <label class="field">
+              <span>自定义短码（可选）</span>
+              <input id="public-code" type="text" placeholder="promo2026" maxlength="32" autocomplete="off" />
+            </label>
+            <label class="field">
+              <span>有效期天数（可选）</span>
+              <input id="public-ttl" type="number" min="1" max="3650" placeholder="永久" />
+            </label>
+          </div>
+          <button class="btn primary" type="submit">生成短链</button>
+        </form>
+        <p id="public-msg" class="state"></p>
+      </section>
+
+      <section class="card">
+        <h2>管理入口</h2>
+        <p class="hint">登录 <a href="/admin/">/admin/</a> 可管理所有短链、查看点击、设置权限、审计日志。</p>
+      </section>
+
+      <footer class="foot">
+        跳转：<code>/s/:code</code> · 管理后台：<code>/admin/</code> · 健康检查：<code>/api/health</code>
+      </footer>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>
